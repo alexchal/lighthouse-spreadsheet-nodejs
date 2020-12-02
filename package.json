@@ -1,0 +1,35 @@
+{
+    "name": "lighthouse-spreadsheet-nodejs",
+    "version": "1.0.0",
+    "description": "Lighthouse results publish to Google SpreadSheet",
+    "main": "index.js",
+    "scripts": {
+        "lighthouse": "node src/index.ts",
+        "build": "rimraf build && tsc -p .",
+        "start": "node build/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alexchal/lighthouse-spreadsheet-nodejs.git"
+    },
+    "author": "Alexandros Chalvantzis (a.chalvantzis12@outlook.com)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs/issues"
+    },
+    "homepage": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs#readme",
+    "dependencies": {
+        "google-spreadsheet": "^3.0.14",
+        "googleapis": "^65.0.0"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.9.0",
+        "@typescript-eslint/parser": "^4.9.0",
+        "eslint": "^7.14.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.22.1",
+        "lighthouse": "^6.5.0",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.2"
+    }
+}
