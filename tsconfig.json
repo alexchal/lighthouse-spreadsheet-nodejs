@@ -3,10 +3,10 @@
         "lib": ["es2018", "es5", "dom"],
         "baseUrl": ".",
         "paths": {
-            "@/types/*": ["./src/types/*"],
-            "*": ["./src/types/*"]
+            "@/types/*": ["./types/*"],
+            "*": ["./types/*"]
         },
-        "typeRoots": ["./src/types", "node_modules/@types"],
+        "typeRoots": ["./types", "node_modules/@types"],
         "types": ["node"],
         "resolveJsonModule": true,
         "esModuleInterop": true,
@@ -19,8 +19,8 @@
         "experimentalDecorators": true,
         "declaration": true,
         "sourceMap": false,
-        "noImplicitAny": false
+        "noImplicitAny": true
     },
     "exclude": ["./node_modules/**/*", "./build/**/*", "**/*.test.ts"],
-    "include": ["./src/**/*", "./node_modules/lighthouse/types/**/*.d.ts"]
+    "include": ["./src/**/*"]
 }

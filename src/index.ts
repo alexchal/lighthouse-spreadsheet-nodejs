@@ -1,21 +1,25 @@
 import dotnev from "dotenv";
+// No types for lighthouse
+//@ts-ignore
 import lighthouse from "lighthouse";
 import {
     GoogleSpreadsheet,
     ServiceAccountCredentials
 } from "google-spreadsheet";
-import chromeLauncher from "chrome-launcher";
-import { credentials } from "../config/credentials";
-import { lightHouseConfig } from "../config/lighthouse-config";
+import { launch } from "chrome-launcher";
+import { urls, lightHouseOptions } from "../config";
 import { formatDate } from "./utils";
-
-const { urls, lighthouseOptions, spreadsheetId } = lightHouseConfig;
 
 dotnev.config();
 
-const doc = new GoogleSpreadsheet(spreadsheetId as string);
+const credentials: ServiceAccountCredentials = {
+    client_email: process.env.CLIENT_EMAIL as string,
+    private_key: (process.env.PRIVATE_KEY as string).replace(/\\n/gm, "\n")
+};
 
-const pushResultsToSpreadSheet = async (results) => {
+const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID as string);
+
+const pushResultsToSpreadSheet = async (results: any) => {
     const sheet = doc.sheetsByIndex[0];
     const device = results.lhr.configSettings.emulatedFormFactor;
 
@@ -41,17 +45,17 @@ const pushResultsToSpreadSheet = async (results) => {
     }
 };
 
-const launchChromeAndRunLighthouse = async (urls) => {
+const launchChromeAndRunLighthouse = async (urls: string[]) => {
     const lighthouseResults = async (url: string): Promise<void> => {
-        for (let i = 0; i < lighthouseOptions.length; i++) {
-            const chrome = await chromeLauncher.launch({
+        for (let i = 0; i < lightHouseOptions.length; i++) {
+            const chrome = await launch({
                 chromeFlags: ["--headless"]
             });
             const flags = {
                 logLevel: "info",
                 port: chrome.port
             };
-            let options = lighthouseOptions[i];
+            let options = lightHouseOptions[i];
 
             const results = await lighthouse(url, flags, options);
 
@@ -64,18 +68,14 @@ const launchChromeAndRunLighthouse = async (urls) => {
     const lighthousePromises = [];
 
     for (let i = 0; i < urls.length; i++) {
-        //@ts-ignore
-        lighthousePromises.push(await lighthouseResults(urls[i], i));
+        lighthousePromises.push(await lighthouseResults(urls[i]));
     }
 
     return await Promise.all(lighthousePromises);
 };
-const jsoncredentials = JSON.stringify(credentials);
 
 const init = async () => {
-    await doc.useServiceAccountAuth(
-        (jsoncredentials as unknown) as ServiceAccountCredentials
-    );
+    await doc.useServiceAccountAuth(credentials);
     await doc.loadInfo();
     await launchChromeAndRunLighthouse(urls);
     console.log("---------------------DONE---------------------");
