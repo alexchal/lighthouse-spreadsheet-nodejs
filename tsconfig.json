@@ -18,8 +18,9 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "declaration": true,
-        "sourceMap": false
+        "sourceMap": false,
+        "noImplicitAny": false
     },
     "exclude": ["./node_modules/**/*", "./build/**/*", "**/*.test.ts"],
-    "include": ["./src/**/*"]
+    "include": ["./src/**/*", "./node_modules/lighthouse/types/**/*.d.ts"]
 }
