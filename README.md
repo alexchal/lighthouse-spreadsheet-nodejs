@@ -4,7 +4,7 @@ It is a node.js script which helps you run Lighthouse reports for multiple pages
 
 ## Getting Started
 
-Make sure you have Node.js 12.22.0 or later
+Make sure you have Node.js 12.13.0 or later
 
 ```bash
 node -v
