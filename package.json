@@ -6,7 +6,7 @@
     "scripts": {
         "lighthouse": "nodemon -x ts-node src/index.ts",
         "build": "rimraf build && tsc -p .",
-        "start": "node build/index.js"
+        "start": "node build/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -21,7 +21,8 @@
     "dependencies": {
         "dotenv": "^8.2.0",
         "google-spreadsheet": "^3.0.14",
-        "googleapis": "^65.0.0"
+        "googleapis": "^65.0.0",
+        "lighthouse": "^8.6.0"
     },
     "devDependencies": {
         "@types/google-spreadsheet": "^3.0.2",
@@ -30,7 +31,6 @@
         "eslint": "^7.14.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.22.1",
-        "lighthouse": "^6.5.0",
         "nodemon": "^2.0.6",
         "prettier": "^2.2.1",
         "ts-node": "^9.0.0",
