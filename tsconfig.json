@@ -1,26 +1,26 @@
 {
-    "compilerOptions": {
-        "lib": ["es2018", "es5", "dom"],
-        "baseUrl": ".",
-        "paths": {
-            "@/types/*": ["./types/*"],
-            "*": ["./types/*"]
-        },
-        "typeRoots": ["./types", "node_modules/@types"],
-        "types": ["node"],
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "target": "ES5",
-        "strict": true,
-        "module": "CommonJS",
-        "moduleResolution": "node",
-        "outDir": "./build",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "declaration": true,
-        "sourceMap": false,
-        "noImplicitAny": true
+  "compilerOptions": {
+    "lib": ["es2018", "es5", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/types/*": ["./types/*"],
+      "*": ["./types/*"]
     },
-    "exclude": ["./node_modules/**/*", "./build/**/*", "**/*.test.ts"],
-    "include": ["./src/**/*"]
+    "typeRoots": ["./types", "node_modules/@types"],
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "target": "ES5",
+    "strict": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "sourceMap": false,
+    "noImplicitAny": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules/**/*", "./build/**/*", "**/*.test.ts"]
 }
