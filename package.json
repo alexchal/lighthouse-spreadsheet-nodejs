@@ -1,39 +1,40 @@
 {
-    "name": "lighthouse-spreadsheet-nodejs",
-    "version": "1.0.0",
-    "description": "Lighthouse results publish to Google SpreadSheet",
-    "main": "index.js",
-    "scripts": {
-        "lighthouse": "nodemon -x ts-node src/index.ts",
-        "build": "rimraf build && tsc -p .",
-        "start": "node build/src/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/alexchal/lighthouse-spreadsheet-nodejs.git"
-    },
-    "author": "Alexandros Chalvantzis (a.chalvantzis12@outlook.com)",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs/issues"
-    },
-    "homepage": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs#readme",
-    "dependencies": {
-        "dotenv": "^8.2.0",
-        "google-spreadsheet": "^3.0.14",
-        "googleapis": "^65.0.0",
-        "lighthouse": "^8.6.0"
-    },
-    "devDependencies": {
-        "@types/google-spreadsheet": "^3.0.2",
-        "@typescript-eslint/eslint-plugin": "^4.9.0",
-        "@typescript-eslint/parser": "^4.9.0",
-        "eslint": "^7.14.0",
-        "eslint-config-airbnb-base": "^14.2.1",
-        "eslint-plugin-import": "^2.22.1",
-        "nodemon": "^2.0.6",
-        "prettier": "^2.2.1",
-        "ts-node": "^9.0.0",
-        "typescript": "^4.1.2"
-    }
+  "name": "lighthouse-spreadsheet-nodejs",
+  "version": "1.0.0",
+  "description": "Lighthouse results publish to Google SpreadSheet",
+  "main": "index.js",
+  "scripts": {
+    "lighthouse": "nodemon -x ts-node src/index.ts",
+    "build": "rimraf build && tsc -p .",
+    "lint:fix": "eslint --fix ./src/*.ts",
+    "start": "node build/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexchal/lighthouse-spreadsheet-nodejs.git"
+  },
+  "author": "Alexandros Chalvantzis (a.chalvantzis12@outlook.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs/issues"
+  },
+  "homepage": "https://github.com/alexchal/lighthouse-spreadsheet-nodejs#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0",
+    "googleapis": "^108.0.0",
+    "lighthouse": "^9.6.7"
+  },
+  "devDependencies": {
+    "@types/google-spreadsheet": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "ts-node": "^9.1.1",
+    "typescript": "4.4.2"
+  }
 }
