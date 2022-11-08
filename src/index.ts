@@ -1,10 +1,10 @@
-import dotnev from "dotenv";
 import lighthouse, { FlagsType, LighthouseResultType } from "lighthouse";
 import {
   GoogleSpreadsheet,
   ServiceAccountCredentials,
 } from "google-spreadsheet";
 import { launch } from "chrome-launcher";
+import dotnev from "dotenv";
 import { urls, lightHouseOptions } from "../config";
 
 dotnev.config();
@@ -69,7 +69,7 @@ const launchChromeAndRunLighthouse = async (urls: string[]) => {
     lighthousePromises.push(await lighthouseResults(urls[i]));
   }
 
-  return await Promise.all(lighthousePromises);
+  Promise.all(lighthousePromises);
 };
 
 const init = async () => {
