@@ -32,13 +32,11 @@ const pushResultsToSpreadSheet = async (results: LighthouseResultType) => {
     SEO: results.lhr.categories.seo.score * 100,
   };
 
-  try {
-    await sheet.addRow(spreadSheetData);
-    console.log(`Report is done for ${results.lhr.finalUrl} (${device})`);
-    console.log("Successfully publish results to GoogleSpreadSheet");
-  } catch (error) {
-    console.log("Something went wrong", error);
-  }
+  await sheet.addRow(spreadSheetData);
+
+  console.log(
+    `Successfully published results for ${results.lhr.finalUrl} ${results.lhr.configSettings.emulatedFormFactor}`,
+  );
 };
 
 const launchChromeAndRunLighthouse = async (urls: string[]) => {
@@ -57,9 +55,9 @@ const launchChromeAndRunLighthouse = async (urls: string[]) => {
 
       const results = await lighthouse(url, flags, options);
 
-      await pushResultsToSpreadSheet(results);
+      chrome.kill();
 
-      await chrome.kill();
+      await pushResultsToSpreadSheet(results);
     }
   };
 
@@ -69,14 +67,15 @@ const launchChromeAndRunLighthouse = async (urls: string[]) => {
     lighthousePromises.push(await lighthouseResults(urls[i]));
   }
 
-  Promise.all(lighthousePromises);
+  Promise.all(lighthousePromises).then(() => {
+    console.log("---------------------DONE---------------------");
+  });
 };
 
 const init = async () => {
   await doc.useServiceAccountAuth(credentials);
   await doc.loadInfo();
   await launchChromeAndRunLighthouse(urls);
-  console.log("---------------------DONE---------------------");
 };
 
 init();

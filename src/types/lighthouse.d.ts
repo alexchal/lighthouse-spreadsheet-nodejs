@@ -50,7 +50,7 @@ declare module "lighthouse" {
     url: string,
     flags: FlagsType,
     options: LightHouseOptions,
-  ): LighthouseResultType;
+  ): Promise<LighthouseResultType>;
 
   export default lighthouse;
 }
